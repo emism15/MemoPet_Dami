@@ -16,7 +16,7 @@
         android:layout_height="150dp"
         android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_registro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +63,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietNombres"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
+                    android:layout_height="50dp"
                     android:inputType="textPersonName"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -82,7 +82,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietApellidos"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
+                    android:layout_height="50dp"
                     android:inputType="textPersonName"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -101,7 +101,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietCorreoRegistro"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
+                    android:layout_height="50dp"
                     android:inputType="textEmailAddress"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -121,7 +121,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietClaveRegistro"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
+                    android:layout_height="50dp"
                     android:singleLine="true"
                     android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
