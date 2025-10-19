@@ -1,9 +1,10 @@
-package com.cibertec.memopet_proyecto
+package com.cibertec.memopet_proyecto.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.cibertec.memopet_proyecto.R
 
 class BienvenidaActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

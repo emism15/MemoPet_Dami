@@ -1,4 +1,4 @@
-package com.cibertec.memopet_proyecto
+package com.cibertec.memopet_proyecto.entity
 
 data class Usuario (
     var codigo : Int,

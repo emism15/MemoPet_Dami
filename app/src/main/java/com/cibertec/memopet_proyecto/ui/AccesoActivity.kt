@@ -1,14 +1,15 @@
-package com.cibertec.memopet_proyecto
+package com.cibertec.memopet_proyecto.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cibertec.memopet_proyecto.ui.HomeActivity
+import com.cibertec.memopet_proyecto.R
+import com.cibertec.memopet_proyecto.ui.RegistroActivity
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class AccesoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,5 +47,3 @@ class AccesoActivity : AppCompatActivity() {
         }
     }
 }
-
-

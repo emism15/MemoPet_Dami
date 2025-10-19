@@ -12,25 +12,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MemoPet_Proyecto">
         <activity
-            android:name=".AccesoActivity"
+            android:name=".ui.PerfilMascotaActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistroActivity"
+            android:name=".ui.CalendarioVacunasActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.RegistrarVacunasActivity"
             android:exported="false" />
-
         <activity
-            android:name=".BienvenidaActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:name=".ui.RegistrarMascotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AccesoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.BienvenidaActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
-    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,12 +1,13 @@
-package com.cibertec.memopet_proyecto
+package com.cibertec.memopet_proyecto.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.cibertec.memopet_proyecto.R
 
 class RegistroActivity : AppCompatActivity() {
 
