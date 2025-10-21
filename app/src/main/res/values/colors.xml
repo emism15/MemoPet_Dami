@@ -3,5 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="celeste">#a8e1f1</color>
+    <color name="Verde1">#98C379</color>
+    <color name="Verde2">#81A85B</color>
+    <color name="blanco2">#FFFFFF</color>
+    <color name="negro2">#2E2E2E</color>
+    <color name="gris">#6C757D</color>
+    <color name="verde3">#dfe9ce</color>
 
 </resources>
