@@ -11,9 +11,8 @@ class BienvenidaActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bienvenida)
 
-        val btnStart = findViewById<Button>(R.id.btnEmpezar)
-
-        btnStart.setOnClickListener {
+        val btnEmpezar = findViewById<Button>(R.id.btnEmpezar)
+        btnEmpezar.setOnClickListener {
             val intent = Intent(this, AccesoActivity::class.java)
             startActivity(intent)
             finish() // para que no regrese a welcome

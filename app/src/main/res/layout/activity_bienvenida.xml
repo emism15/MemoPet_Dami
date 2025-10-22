@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/Verde1">
 
-
-
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
@@ -51,22 +49,24 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-
     <ImageView
         android:id="@+id/animales"
         android:layout_width="340dp"
         android:layout_height="259dp"
+        android:layout_marginTop="1dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/petbien_foreground"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="297dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <Button
         android:id="@+id/btnEmpezar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="44dp"
         android:layout_marginTop="1dp"
-        android:backgroundTint="#32620e"
+        android:backgroundTint="@color/verde4"
         android:text="Empezar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
