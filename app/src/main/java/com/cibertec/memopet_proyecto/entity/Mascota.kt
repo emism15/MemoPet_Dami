@@ -1,10 +1,13 @@
 package com.cibertec.memopet_proyecto.entity
 
 data class Mascota(
-    val id: Int,
+    val idMascota: Int = 0,
     val nombre: String,
     val especie: String,
+    val genero: String,
+    val color: String,
+    val esterilizado: String,
     val fechaNacimiento: String,
-    val fotoResId: Int
-
+    val fotoMasc: String,
+    val idUsuario: Int
 )

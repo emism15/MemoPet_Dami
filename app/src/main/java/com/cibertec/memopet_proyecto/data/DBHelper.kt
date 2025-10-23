@@ -9,14 +9,30 @@ class DBHelper(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase) {
 
-        // Tabla Mascota
+        // Tabla USUARIO
         db.execSQL("""
-            CREATE TABLE mascota(
-                id_mascota INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            CREATE TABLE usuario (
+                idUsuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                nombres TEXT,
+                apellidos TEXT,
+                correo TEXT UNIQUE,
+                clave TEXT
+            )
+        """.trimIndent())
+
+        // Tabla MASCOTA
+        db.execSQL("""
+            CREATE TABLE mascota (
+                idMascota INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 nombre TEXT,
                 especie TEXT,
-                fecha_nacimiento TEXT,
-                foto_res_id INTEGER
+                genero TEXT,
+                color TEXT,
+                esterilizado TEXT,
+                fechaNacimiento TEXT,
+                fotoMasc TEXT,
+                idUsuario INTEGER,
+                FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
             )
         """.trimIndent())
 
@@ -33,6 +49,7 @@ class DBHelper(context: Context) :
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS usuario")
         db.execSQL("DROP TABLE IF EXISTS vacuna")
         db.execSQL("DROP TABLE IF EXISTS mascota")
         onCreate(db)

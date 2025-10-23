@@ -23,16 +23,14 @@ class HomeActivity : AppCompatActivity() {
         val rvMascotas = findViewById<RecyclerView>(R.id.rvMascotas)
         val btnAgregarMascota = findViewById<Button>(R.id.btnAgregarMascota)
 
-        // Lista de prueba
-        mascotas.add(Mascota(1, "Firulais", "Perro", "2023-01-01", R.mipmap.mascota))
-        mascotas.add(Mascota(2, "Michi", "Gato", "2022-07-15", R.mipmap.mascota2))
+
 
         adapter = MascotaAdapter(mascotas) { mascota ->
             val intent = Intent(this, PerfilMascotaActivity::class.java)
             intent.putExtra("nombre", mascota.nombre)
             intent.putExtra("especie", mascota.especie)
             intent.putExtra("fechaNacimiento", mascota.fechaNacimiento)
-            intent.putExtra("fotoResId", mascota.fotoResId)
+            intent.putExtra("fotoResId", mascota.fotoMasc)
             startActivity(intent)
         }
 

@@ -92,7 +92,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietCorreo"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="55dp"
                     android:inputType="text"
                     android:singleLine="true" />
 
@@ -113,13 +113,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietClave"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="55dp"
                     android:singleLine="true"
                     android:inputType="textPassword"/>
-
             </com.google.android.material.textfield.TextInputLayout>
-
-
 
             <Button
                 android:id="@+id/btnInicio"
