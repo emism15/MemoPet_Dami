@@ -3,12 +3,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="celeste">#a8e1f1</color>
-    <color name="Verde1">#98C379</color>
-    <color name="Verde2">#81A85B</color>
     <color name="blanco2">#FFFFFF</color>
     <color name="negro2">#2E2E2E</color>
     <color name="gris">#6C757D</color>
+    <color name="verde1">#98C379</color>
+    <color name="verde2">#81A85B</color>
     <color name="verde3">#dfe9ce</color>
     <color name="verde4">#32620e</color>
+    <color name="verde5">#155e29</color>
+    <color name="verdec1">#b8daba</color>
+    <color name="verdec2">#95c799</color>
+    <color name="verdec3">#95c799</color>
+    <color name="verdec4">#17d244</color>
+    <color name="verdec5">#d1f7b6</color>
+
+
+
 
 </resources>

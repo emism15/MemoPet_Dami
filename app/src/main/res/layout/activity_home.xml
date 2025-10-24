@@ -18,7 +18,7 @@
             android:id="@+id/layoutHeader"
             android:layout_width="0dp"
             android:layout_height="118dp"
-            android:background="@color/Verde1"
+            android:background="@color/verde1"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent"
