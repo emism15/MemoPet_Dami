@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cibertec.memopet_proyecto.R
-import com.cibertec.memopet_proyecto.adapters.MascotaAdapter
+import com.cibertec.memopet_proyecto.data.MascotaDAO
 import com.cibertec.memopet_proyecto.entity.Mascota
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class HomeActivity : AppCompatActivity() {

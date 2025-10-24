@@ -36,22 +36,22 @@ class DBHelper(context: Context) :
             )
         """.trimIndent())
 
-        // Tabla Vacuna
-        db.execSQL("""
-            CREATE TABLE vacuna(
-                id_vacuna INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                mascota_id INTEGER,
-                nombre_vacuna TEXT,
-                fecha_aplicacion TEXT,
-                FOREIGN KEY (mascota_id) REFERENCES mascota(id_mascota)
-            )
-        """.trimIndent())
+//        // Tabla Vacuna
+//        db.execSQL("""
+//            CREATE TABLE vacuna(
+//                id_vacuna INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+//                mascota_id INTEGER,
+//                nombre_vacuna TEXT,
+//                fecha_aplicacion TEXT,
+//                FOREIGN KEY (mascota_id) REFERENCES mascota(id_mascota)
+//            )
+//        """.trimIndent())
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS usuario")
-        db.execSQL("DROP TABLE IF EXISTS vacuna")
         db.execSQL("DROP TABLE IF EXISTS mascota")
+//        db.execSQL("DROP TABLE IF EXISTS vacuna")
         onCreate(db)
     }
 }

@@ -8,6 +8,6 @@ data class Mascota(
     val color: String,
     val esterilizado: String,
     val fechaNacimiento: String,
-    val fotoMasc: String?,
+    val fotoMasc: String? = null,
     val idUsuario: Int
 )
