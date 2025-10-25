@@ -53,4 +53,27 @@ class MascotaDAO(context: Context) {
         db.close()
         return lista
     }
+
+
+    fun obtenerPorId(id: Int): Mascota? {
+        val db = dbHelper.readableDatabase
+        var mascota: Mascota? = null
+        val cursor = db.rawQuery("SELECT * FROM mascota WHERE idMascota = ?", arrayOf(id.toString()))
+        if (cursor.moveToFirst()) {
+            mascota = Mascota(
+                idMascota = cursor.getInt(cursor.getColumnIndexOrThrow("idMascota")),
+                nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                especie = cursor.getString(cursor.getColumnIndexOrThrow("especie")),
+                genero = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
+                color = cursor.getString(cursor.getColumnIndexOrThrow("color")),
+                esterilizado = cursor.getString(cursor.getColumnIndexOrThrow("esterilizado")),
+                fechaNacimiento = cursor.getString(cursor.getColumnIndexOrThrow("fechaNacimiento")),
+                fotoMasc = cursor.getString(cursor.getColumnIndexOrThrow("fotoMasc")),
+                idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("idUsuario"))
+            )
+        }
+        cursor.close()
+        db.close()
+        return mascota
+    }
 }

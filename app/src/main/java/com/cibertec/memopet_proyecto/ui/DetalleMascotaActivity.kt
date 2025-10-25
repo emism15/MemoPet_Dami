@@ -20,8 +20,8 @@ class DetalleMascotaActivity : AppCompatActivity() {
         vpContenido = findViewById(R.id.vpContenido)
 
 
-        val mascotaId = intent.getIntExtra("MASCOTA_ID", -1)
-        val adapter = DetalleMascotaAdapter(this)
+        val mascotaId = intent.getIntExtra("MASCOTA_ID", 0)
+        val adapter = DetalleMascotaAdapter(this, mascotaId)
         vpContenido.adapter = adapter
 
 
