@@ -92,10 +92,6 @@ class RegistroActivity : AppCompatActivity() {
 
 
 
-
-
-
-
         // Esto hace que el teclado no tape los campos
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())

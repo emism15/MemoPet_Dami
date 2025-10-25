@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MemoPet_Proyecto">
         <activity
+            android:name=".ui.DetalleMascotaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.PerfilMascotaActivity"
             android:exported="false" />
         <activity

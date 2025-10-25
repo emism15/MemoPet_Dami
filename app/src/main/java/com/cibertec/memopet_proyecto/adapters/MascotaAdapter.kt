@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MascotaAdapter(
-    private val context: Context,
     private var lista: List<Mascota>,
     private val onItemClick: (Mascota) -> Unit):
     RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder>() {

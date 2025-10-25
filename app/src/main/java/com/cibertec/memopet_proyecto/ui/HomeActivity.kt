@@ -7,33 +7,36 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cibertec.memopet_proyecto.R
+import com.cibertec.memopet_proyecto.adapters.MascotaAdapter
 import com.cibertec.memopet_proyecto.data.MascotaDAO
 import com.cibertec.memopet_proyecto.entity.Mascota
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var adapter: MascotaAdapter
-    private val mascotas = mutableListOf<Mascota>()
+    private val listamascotas = mutableListOf<Mascota>()
+    private lateinit var mascotaDAO: MascotaDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        mascotaDAO = MascotaDAO(this)
+
 
         val rvMascotas = findViewById<RecyclerView>(R.id.rvMascotas)
         val btnAgregarMascota = findViewById<Button>(R.id.btnAgregarMascota)
 
 
 
-        adapter = MascotaAdapter(mascotas) { mascota ->
-            val intent = Intent(this, PerfilMascotaActivity::class.java)
-            intent.putExtra("nombre", mascota.nombre)
-            intent.putExtra("especie", mascota.especie)
-            intent.putExtra("fechaNacimiento", mascota.fechaNacimiento)
-            intent.putExtra("fotoResId", mascota.fotoMasc)
+        // Configurar adapter
+        adapter = MascotaAdapter(listamascotas) { mascota ->
+            val intent = Intent(this, DetalleMascotaActivity::class.java)
+            intent.putExtra("idMascota", mascota.idMascota)
             startActivity(intent)
         }
+
 
         rvMascotas.layoutManager = LinearLayoutManager(this)
         rvMascotas.adapter = adapter
@@ -46,6 +49,14 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        // Traer datos de SQLite cada vez que regresa a Home
+        cargarMascotas()
+    }
+
+    private fun cargarMascotas() {
+        val usuarioIdActual = 1 // Cambia según tu lógica de login
+        listamascotas.clear()
+        listamascotas.addAll(mascotaDAO.obtenerPorUsuario(usuarioIdActual))
         adapter.notifyDataSetChanged()
     }
 }
