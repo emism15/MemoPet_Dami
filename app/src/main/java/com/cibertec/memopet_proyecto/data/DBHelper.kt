@@ -36,6 +36,17 @@ class DBHelper(context: Context) :
             )
         """.trimIndent())
 
+        // Tabla RECORDATORIO
+        db.execSQL("""
+        CREATE TABLE recordatorio (
+            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            mascotaId INTEGER,
+            tipo TEXT,
+            fecha TEXT,
+            FOREIGN KEY(mascotaId) REFERENCES mascota(idMascota)
+        )
+        """.trimIndent())
+
 //        // Tabla Vacuna
 //        db.execSQL("""
 //            CREATE TABLE vacuna(

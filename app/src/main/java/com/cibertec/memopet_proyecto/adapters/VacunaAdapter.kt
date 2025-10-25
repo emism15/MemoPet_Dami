@@ -21,7 +21,7 @@ class VacunaAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacunaViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_vacuna, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_recordatorio, parent, false)
         return VacunaViewHolder(view)
     }
 
