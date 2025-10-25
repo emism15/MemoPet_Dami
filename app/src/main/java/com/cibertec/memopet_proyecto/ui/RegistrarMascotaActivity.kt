@@ -3,6 +3,7 @@ package com.cibertec.memopet_proyecto.ui
 import android.graphics.Bitmap
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.net.Uri
 import android.content.Intent
@@ -22,15 +23,22 @@ class RegistrarMascotaActivity : AppCompatActivity() {
     private lateinit var etNombre: EditText
     private lateinit var spEspecie: Spinner
     private lateinit var etFecha: EditText
+
     private lateinit var rgVacunas: RadioGroup
     private lateinit var rbSi: RadioButton
     private lateinit var rbNo: RadioButton
     private lateinit var btnGuardar: Button
     private lateinit var imgMascota: ImageView
     private lateinit var btnSeleccionarFoto: Button
+    private lateinit var  mtbGeneroMacho: Button
+    private lateinit var tieColor : EditText
 
+    private lateinit var mtbGeneroHembra : RadioButton
+
+    private lateinit var mtbGeneroNo : RadioButton
     private var imagenUri: Uri? = null
     private var bitmapSeleccionado: Bitmap? = null
+
 
     // Lanza galería
     private val seleccionarImagenLauncher =
@@ -61,14 +69,16 @@ class RegistrarMascotaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar_mascota)
 
-        etNombre = findViewById(R.id.etNombreMascota)
-        spEspecie = findViewById(R.id.spEspecie)
-        etFecha = findViewById(R.id.etFechaNacimiento)
-        rgVacunas = findViewById(R.id.rgVacunas)
-        rbSi = findViewById(R.id.rbSiVacunas)
-        rbNo = findViewById(R.id.rbNoVacunas)
+        etNombre = findViewById(R.id.etNomMascota)
+        spEspecie = findViewById(R.id.etEspecie)
+        tieColor=findViewById(R.id.etColor)
+        etFecha = findViewById(R.id.etFecNacimiento)
+        mtbGeneroHembra = findViewById(R.id.rbHembra)
+        mtbGeneroMacho = findViewById(R.id.rbMacho)
+        rbSi = findViewById(R.id.rbSiEsterilizado)
+        rbNo = findViewById(R.id.rbNoEsterilizado)
         btnGuardar = findViewById(R.id.btnGuardarMascota)
-        imgMascota = findViewById(R.id.imgMascota)
+        imgMascota = findViewById(R.id.imgNewMascota)
         btnSeleccionarFoto = findViewById(R.id.btnSeleccionarFoto)
 
         val especies = listOf("Perro", "Gato", "Loro", "Conejo")
@@ -93,47 +103,59 @@ class RegistrarMascotaActivity : AppCompatActivity() {
         // Elegir foto
         btnSeleccionarFoto.setOnClickListener { mostrarDialogoFoto() }
 
+        val sharedPref = getSharedPreferences("usuario_prefs", Context.MODE_PRIVATE)
+        val idUsuario = sharedPref.getInt("idUsuario", 0) // 0 si no hay usuario guardado
+
+
+
         // Guardar
-        btnGuardar.setOnClickListener {
-            val nombre = etNombre.text.toString().trim()
-            val especie = spEspecie.selectedItem.toString()
-            val fecha = etFecha.text.toString().trim()
-            val tieneVacunas = rbSi.isChecked
+//        btnGuardar.setOnClickListener {
+//            val nombre = etNombre.text.toString().trim()
+//            val especie = spEspecie.selectedItem.toString()
+//            val fecha = etFecha.text.toString().trim()
+//            val tieneVacunas = rbSi.isChecked
+//
+//            if (nombre.isEmpty() || fecha.isEmpty()) {
+//                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
 
-            if (nombre.isEmpty() || fecha.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+//            val mascota = Mascota(
+//                idMascota = 0,
+//                nombre = nombre,
+//                especie = especie,
+//                genero = genero,
+//                color = color,
+//                esterilizado = esterilizado,
+//                fechaNacimiento = fecha,
+//                fotoMasc = R.mipmap.mascota.toString(), // lo convertimos a String temporalmente
+//                idUsuario = idUsuario
+//            )
 
-            val mascota = Mascota(
-                id = 0,
-                nombre = nombre,
-                especie = especie,
-                fechaNacimiento = fecha,
-                fotoResId = R.mipmap.mascota// por ahora
-            )
 
-            Toast.makeText(
-                this,
-                "Mascota registrada: ${mascota.nombre} (${mascota.especie})",
-                Toast.LENGTH_LONG
-            ).show()
 
-            // Redirigir según la opción de vacunas
-            if (tieneVacunas) {
-                // Si marcó Sí → RegistrarVacunasActivity
-                val intent = Intent(this, RegistrarVacunasActivity::class.java)
-                intent.putExtra("ID_MASCOTA", mascota.id) // Pasar ID si lo guardas en SQLite
-                startActivity(intent)
-            } else {
-                // Si marcó No → CalendarioVacunasActivity
-                val intent = Intent(this, CalendarioVacunasActivity::class.java)
-                intent.putExtra("ID_MASCOTA", mascota.id)
-                startActivity(intent)
-            }
 
-            finish()
-        }
+//            Toast.makeText(
+//                this,
+//                "Mascota registrada: ${mascota.nombre} (${mascota.especie})",
+//                Toast.LENGTH_LONG
+//            ).show()
+//
+//            // Redirigir según la opción de vacunas
+//            if (tieneVacunas) {
+//                // Si marcó Sí → RegistrarVacunasActivity
+//                val intent = Intent(this, RegistrarVacunasActivity::class.java)
+//                intent.putExtra("ID_MASCOTA", mascota.id) // Pasar ID si lo guardas en SQLite
+//                startActivity(intent)
+//            } else {
+//                // Si marcó No → CalendarioVacunasActivity
+//                val intent = Intent(this, CalendarioVacunasActivity::class.java)
+//                intent.putExtra("ID_MASCOTA", mascota.id)
+//                startActivity(intent)
+//            }
+//
+//            finish()
+//        }
     }
 
     private fun mostrarDialogoFoto() {

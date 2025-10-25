@@ -1,15 +1,15 @@
-//package com.cibertec.memopet_proyecto.adapters
-//
-//import android.content.Context
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import android.widget.TextView
-//import androidx.recyclerview.widget.RecyclerView
-//import com.cibertec.memopet_proyecto.R
-//import com.cibertec.memopet_proyecto.entity.Vacuna
-//
-//class VacunaAdapter(
+package com.cibertec.memopet_proyecto.adapters
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.cibertec.memopet_proyecto.R
+import com.cibertec.memopet_proyecto.entity.Vacuna
+
+class VacunaAdapter(
 //
 //    private val context: Context,
 //    private val lista: List<Vacuna>
@@ -33,4 +33,4 @@
 //    }
 //
 //    override fun getItemCount(): Int = lista.size
-//}
+)

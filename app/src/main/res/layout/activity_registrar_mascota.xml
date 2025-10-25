@@ -94,23 +94,31 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Especie -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEspecie"
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/tilEspecie"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="52dp"-->
+<!--                android:hint="Especie: Ejem. perro, gato,etc"-->
+<!--                app:boxCornerRadiusBottomEnd="12dp"-->
+<!--                app:boxCornerRadiusBottomStart="12dp"-->
+<!--                app:boxCornerRadiusTopEnd="12dp"-->
+<!--                app:boxCornerRadiusTopStart="12dp"-->
+<!--                android:layout_marginTop="6dp"-->
+<!--                android:layout_marginBottom="8dp">-->
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEspecie"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:inputType="text" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <Spinner
+                android:id="@+id/etEspecie"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:hint="Especie: Ejem. perro, gato,etc"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp"
                 android:layout_marginTop="6dp"
-                android:layout_marginBottom="8dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEspecie"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginBottom="8dp"
+                android:spinnerMode="dropdown" />
 
             <!-- Color -->
             <com.google.android.material.textfield.TextInputLayout
