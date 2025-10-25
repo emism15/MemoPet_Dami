@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/ic_vacuna_foreground"
+            android:contentDescription="Vacunación"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vacunación"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp" />
+
+        <EditText
+            android:id="@+id/etNota"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:hint="Escribe una nota o detalle..."
+            android:gravity="top|start"
+            android:background="@android:drawable/edit_text"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Seleccionar fecha"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/etHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Seleccionar hora"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_marginBottom="25dp"/>
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar recordatorio"
+            android:layout_marginTop="25dp"
+            android:textSize="18dp"
+            android:backgroundTint="@color/verde4"/>
+    </LinearLayout>
+</ScrollView>

@@ -21,7 +21,7 @@
             android:name=".ui.CalendarioVacunasActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.RegistrarVacunasActivity"
+            android:name=".ui.VacunacionActivity"
             android:exported="false" />
         <activity
             android:name=".ui.RegistrarMascotaActivity"

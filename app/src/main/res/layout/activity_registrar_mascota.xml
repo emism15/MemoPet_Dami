@@ -78,7 +78,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilNomMascota"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="58dp"
                 android:hint="Nombre Mascota"
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
@@ -124,8 +124,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilColor"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Color"
+                android:layout_height="58dp"
+                android:hint="Color de mascota"
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusTopEnd="12dp"
@@ -143,8 +143,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilFecNacimiento"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Seleccionar Fecha"
+                android:layout_height="58dp"
+                android:hint="Seleccionar Fecha de nacimiento"
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
                 app:boxCornerRadiusTopEnd="12dp"

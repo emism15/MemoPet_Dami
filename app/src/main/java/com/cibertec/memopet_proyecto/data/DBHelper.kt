@@ -43,6 +43,8 @@ class DBHelper(context: Context) :
             mascotaId INTEGER,
             tipo TEXT,
             fecha TEXT,
+            hora TEXT,
+            nota TEXT,
             FOREIGN KEY(mascotaId) REFERENCES mascota(idMascota)
         )
         """.trimIndent())

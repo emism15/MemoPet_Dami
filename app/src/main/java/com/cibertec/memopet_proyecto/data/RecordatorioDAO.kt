@@ -16,6 +16,8 @@ class RecordatorioDAO (context: Context) {
             put("idMascota", recordatorio.mascotaId)
             put("tipo", recordatorio.tipo)
             put("fecha", recordatorio.fecha)
+            put("hora", recordatorio.hora)
+            put("nota", recordatorio.nota)
         }
         val id = db.insert("recordatorio", null, cv)
         db.close()
@@ -23,25 +25,23 @@ class RecordatorioDAO (context: Context) {
     }
 
     fun obtenerPorMascota(idMascota: Int): List<Recordatorio> {
-        val db: SQLiteDatabase = dbHelper.readableDatabase
         val lista = mutableListOf<Recordatorio>()
-
-        val cursor: Cursor = db.rawQuery(
-            "SELECT * FROM recordatorio WHERE mascotaId = ?",
-            arrayOf(idMascota.toString())
-        )
-
-        while (cursor.moveToNext()) {
-            lista.add(
-                Recordatorio(
-                    id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
-                    mascotaId = cursor.getInt(cursor.getColumnIndexOrThrow("mascotaId")),
-                    tipo = cursor.getString(cursor.getColumnIndexOrThrow("tipo")),
-                    fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"))
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM recordatorio WHERE idMascota=?", arrayOf(idMascota.toString()))
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(
+                    Recordatorio(
+                        id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                        mascotaId = cursor.getInt(cursor.getColumnIndexOrThrow("mascotaId")),
+                        tipo = cursor.getString(cursor.getColumnIndexOrThrow("tipo")),
+                        fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
+                        hora = cursor.getString(cursor.getColumnIndexOrThrow("hora")),
+                        nota = cursor.getString(cursor.getColumnIndexOrThrow("nota"))
+                    )
                 )
-            )
+            } while (cursor.moveToNext())
         }
-
         cursor.close()
         db.close()
         return lista
