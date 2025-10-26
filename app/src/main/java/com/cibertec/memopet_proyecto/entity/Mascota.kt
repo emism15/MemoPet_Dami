@@ -6,7 +6,7 @@ data class Mascota(
     val especie: String,
     val genero: String,
     val color: String,
-    val esterilizado: String,
+    val esterilizado: Boolean,
     val fechaNacimiento: String,
     val fotoMasc: String? = null,
     val idUsuario: Int

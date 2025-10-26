@@ -27,7 +27,7 @@ class RecordatorioDAO (context: Context) {
     fun obtenerPorMascota(idMascota: Int): List<Recordatorio> {
         val lista = mutableListOf<Recordatorio>()
         val db = dbHelper.readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM recordatorio WHERE idMascota=?", arrayOf(idMascota.toString()))
+        val cursor = db.rawQuery("SELECT * FROM recordatorio WHERE mascotaId=?", arrayOf(idMascota.toString()))
         if (cursor.moveToFirst()) {
             do {
                 lista.add(

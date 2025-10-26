@@ -15,25 +15,22 @@ import com.google.android.material.textfield.TextInputEditText
 
 class AccesoActivity : AppCompatActivity() {
 
-
     private lateinit var etCorreo: TextInputEditText
     private lateinit var etClave: TextInputEditText
     private lateinit var btnInicio: Button
     private lateinit var tvRegistro: TextView
     private lateinit var usuarioDAO: UsuarioDAO
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acceso)
 
-        //Inicializar vistas
-        etCorreo = findViewById<TextInputEditText>(R.id.tietCorreo)
-        etClave = findViewById<TextInputEditText>(R.id.tietClave)
-        btnInicio = findViewById<Button>(R.id.btnInicio)
-        tvRegistro = findViewById<TextView>(R.id.tvRegistro)
+        // Inicializar vistas
+        etCorreo = findViewById(R.id.tietCorreo)
+        etClave = findViewById(R.id.tietClave)
+        btnInicio = findViewById(R.id.btnInicio)
+        tvRegistro = findViewById(R.id.tvRegistro)
         usuarioDAO = UsuarioDAO(this)
-
 
         // Botón Iniciar sesión
         btnInicio.setOnClickListener {
@@ -48,8 +45,15 @@ class AccesoActivity : AppCompatActivity() {
             val usuario: Usuario? = usuarioDAO.verificar(correo, clave)
             if (usuario != null) {
                 Toast.makeText(this, "Bienvenido ${usuario.nombres}", Toast.LENGTH_SHORT).show()
+
+                // 🔹 Guardar idUsuario en SharedPreferences
+                val sharedPref = getSharedPreferences("usuario_prefs", Context.MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putInt("idUsuario", usuario.idUsuario)
+                    apply()
+                }
+
                 val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("idUsuario", usuario.idUsuario)
                 startActivity(intent)
                 finish()
             } else {

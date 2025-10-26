@@ -15,10 +15,10 @@ class MascotaDAO(context: Context) {
             put("especie", mascota.especie)
             put("genero", mascota.genero)
             put("color", mascota.color)
-            put("esterilizado", mascota.esterilizado)
-            put("fecha_nacimiento", mascota.fechaNacimiento)
-            put("foto", mascota.fotoMasc)
-            put("id_usuario", mascota.idUsuario)
+            put("esterilizado", if (mascota.esterilizado) 1 else 0) // guardar como 0/1
+            put("fechaNacimiento", mascota.fechaNacimiento)
+            put("fotoMasc", mascota.fotoMasc)
+            put("idUsuario", mascota.idUsuario)
         }
         val resultado = db.insert("mascota", null, valores)
         db.close()
@@ -26,31 +26,27 @@ class MascotaDAO(context: Context) {
     }
 
     fun obtenerPorUsuario(idUsuario: Int): List<Mascota> {
-        val db = dbHelper.readableDatabase
         val lista = mutableListOf<Mascota>()
-        val cursor: Cursor = db.rawQuery(
-            "SELECT * FROM mascota WHERE idUsuario = ?",
-            arrayOf(idUsuario.toString())
-        )
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM mascota WHERE idUsuario = ?", arrayOf(idUsuario.toString()))
 
-        while (cursor.moveToNext()) {
-            lista.add(
-                Mascota(
+        if (cursor.moveToFirst()) {
+            do {
+                val mascota = Mascota(
                     idMascota = cursor.getInt(cursor.getColumnIndexOrThrow("idMascota")),
                     nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
                     especie = cursor.getString(cursor.getColumnIndexOrThrow("especie")),
                     genero = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
                     color = cursor.getString(cursor.getColumnIndexOrThrow("color")),
-                    esterilizado = cursor.getString(cursor.getColumnIndexOrThrow("esterilizado")),
+                    esterilizado = cursor.getInt(cursor.getColumnIndexOrThrow("esterilizado")) > 0,
                     fechaNacimiento = cursor.getString(cursor.getColumnIndexOrThrow("fechaNacimiento")),
                     fotoMasc = cursor.getString(cursor.getColumnIndexOrThrow("fotoMasc")),
                     idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("idUsuario"))
                 )
-            )
+                lista.add(mascota)
+            } while (cursor.moveToNext())
         }
-
         cursor.close()
-        db.close()
         return lista
     }
 
@@ -66,7 +62,7 @@ class MascotaDAO(context: Context) {
                 especie = cursor.getString(cursor.getColumnIndexOrThrow("especie")),
                 genero = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
                 color = cursor.getString(cursor.getColumnIndexOrThrow("color")),
-                esterilizado = cursor.getString(cursor.getColumnIndexOrThrow("esterilizado")),
+                esterilizado = cursor.getInt(cursor.getColumnIndexOrThrow("esterilizado")) == 1,
                 fechaNacimiento = cursor.getString(cursor.getColumnIndexOrThrow("fechaNacimiento")),
                 fotoMasc = cursor.getString(cursor.getColumnIndexOrThrow("fotoMasc")),
                 idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("idUsuario"))
@@ -76,4 +72,9 @@ class MascotaDAO(context: Context) {
         db.close()
         return mascota
     }
+
+
+
+
+
 }

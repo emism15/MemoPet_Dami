@@ -11,7 +11,6 @@ import com.cibertec.memopet_proyecto.adapters.MascotaAdapter
 import com.cibertec.memopet_proyecto.data.MascotaDAO
 import com.cibertec.memopet_proyecto.entity.Mascota
 
-
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var adapter: MascotaAdapter
@@ -24,11 +23,8 @@ class HomeActivity : AppCompatActivity() {
 
         mascotaDAO = MascotaDAO(this)
 
-
         val rvMascotas = findViewById<RecyclerView>(R.id.rvMascotas)
         val btnAgregarMascota = findViewById<Button>(R.id.btnAgregarMascota)
-
-
 
         // Configurar adapter
         adapter = MascotaAdapter(listamascotas) { mascota ->
@@ -37,7 +33,6 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         rvMascotas.layoutManager = LinearLayoutManager(this)
         rvMascotas.adapter = adapter
 
@@ -45,18 +40,35 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, RegistrarMascotaActivity::class.java)
             startActivity(intent)
         }
+
+        // Cargar mascotas existentes en la DB
+        cargarMascotas()
+        probarDB()
     }
 
     override fun onResume() {
         super.onResume()
-        // Traer datos de SQLite cada vez que regresa a Home
+        // Refrescar lista cada vez que se regresa a Home
         cargarMascotas()
     }
 
     private fun cargarMascotas() {
-        val usuarioIdActual = 1 // Cambia según tu lógica de login
+        val usuarioIdActual = 1 // según tu lógica de login
         listamascotas.clear()
         listamascotas.addAll(mascotaDAO.obtenerPorUsuario(usuarioIdActual))
         adapter.notifyDataSetChanged()
     }
+
+    private fun probarDB() {
+        val usuarioId = 1
+        val lista = mascotaDAO.obtenerPorUsuario(usuarioId)
+        if (lista.isEmpty()) {
+            println("No hay mascotas para el usuario $usuarioId")
+        } else {
+            lista.forEach {
+                println("Mascota en DB: ${it.nombre}, ${it.especie}, ${it.genero}")
+            }
+        }
+    }
 }
+

@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class DBHelper(context: Context) :
-    SQLiteOpenHelper(context, "memopet.db", null, 2) {
+    SQLiteOpenHelper(context, "memopet.db", null, 5) {
 
     override fun onCreate(db: SQLiteDatabase) {
 
@@ -28,7 +28,7 @@ class DBHelper(context: Context) :
                 especie TEXT,
                 genero TEXT,
                 color TEXT,
-                esterilizado TEXT,
+                esterilizado INTEGER, -- 0 = false, 1 = true
                 fechaNacimiento TEXT,
                 fotoMasc TEXT,
                 idUsuario INTEGER,
@@ -37,7 +37,7 @@ class DBHelper(context: Context) :
         """.trimIndent())
 
         // Tabla RECORDATORIO
-        db.execSQL("""
+         db.execSQL("""
         CREATE TABLE recordatorio (
             id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             mascotaId INTEGER,
@@ -61,10 +61,11 @@ class DBHelper(context: Context) :
 //        """.trimIndent())
     }
 
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS usuario")
+        db.execSQL("DROP TABLE IF EXISTS recordatorio")
         db.execSQL("DROP TABLE IF EXISTS mascota")
-//        db.execSQL("DROP TABLE IF EXISTS vacuna")
+        db.execSQL("DROP TABLE IF EXISTS usuario")
         onCreate(db)
     }
 }
